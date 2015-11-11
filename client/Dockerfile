@@ -21,7 +21,6 @@ COPY config.json /etc/sensu/config.json
 
 RUN mkdir -p /etc/sensu/conf.d
 COPY client.json /etc/sensu/conf.d/client.json
-COPY default_handler.json /etc/sensu/conf.d/default_handler.json
 
 RUN mkdir -p /etc/sensu/plugins
 COPY check-memory.sh /etc/sensu/plugins/check-memory.sh
