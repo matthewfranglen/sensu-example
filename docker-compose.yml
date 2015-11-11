@@ -1,0 +1,6 @@
+server:
+    name: sensu-server
+    build: server
+client:
+    name: sensu-client
+    build: client
