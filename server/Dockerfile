@@ -1,32 +1,30 @@
 FROM ubuntu
 
-# Install RabbitMQ
-# See https://sensuapp.org/docs/0.20/install-rabbitmq
+# This connects to the rabbitmq container so does not need it locally
+#
+# This connects to the redis container so does not need it locally
 
-# Install erlang
-RUN wget --output-document=/tmp/erlang-solutions_1.0_all.deb                 \
-        http://packages.erlang-solutions.com/erlang-solutions_1.0_all.deb && \
-    dpkg --install /tmp/erlang-solutions_1.0_all.deb                      && \
-    rm /tmp/erlang-solutions_1.0_all.deb                                  && \
-    apt-get update                                                        && \
-    apt-get -y install erlang
+RUN apt-get update && \
+    apt-get install --yes openssh-server apache2 supervisor wget
+RUN mkdir -p /var/lock/apache2 /var/run/apache2 /var/run/sshd /var/log/supervisor
 
-# Install rabbit mq
-RUN wget --output-document=/tmp/rabbitmq-signing-key-public.asc    \
-        http://www.rabbitmq.com/rabbitmq-signing-key-public.asc && \
-    apt-key add /tmp/rabbitmq-signing-key-public.asc            && \
-    rm /tmp/rabbitmq-signing-key-public.asc                     && \
-    echo "deb     http://www.rabbitmq.com/debian/ testing main"    \
-        > /etc/apt/sources.list.d/rabbitmq.list                 && \
-    apt-get update                                              && \
-    apt-get -y install rabbitmq-server
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Run on startup
-RUN update-rc.d rabbitmq-server defaults
+RUN wget --quiet --output-document=- http://repositories.sensuapp.org/apt/pubkey.gpg | \
+        apt-key add -
+RUN echo "deb     http://repositories.sensuapp.org/apt sensu main" > \
+        /etc/apt/sources.list.d/sensu.list
 
-# Add vhost
-RUN rabbitmqctl add_vhost /sensu
+RUN apt-get update
+RUN apt-get install --yes sensu
 
-# Add user
-rabbitmqctl add_user sensu secret
-rabbitmqctl set_permissions -p /sensu sensu ".*" ".*" ".*"
+RUN mkdir -p /etc/sensu
+COPY config.json /etc/sensu/config.json
+
+RUN mkdir -p /etc/sensu/conf.d
+COPY check_memory.json /etc/sensu/conf.d/check_memory.json
+COPY default_handler.json /etc/sensu/conf.d/default_handler.json
+
+RUN chown -R sensu:sensu /etc/sensu
+
+CMD ["/usr/bin/supervisord"]
