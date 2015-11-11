@@ -21,3 +21,9 @@ server:
     links:
         - rabbitmq
         - redis
+client:
+    container_name: sensu-client
+    build: client
+    links:
+        - rabbitmq
+        - server

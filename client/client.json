@@ -1,0 +1,9 @@
+{
+  "client": {
+    "name": "docker-client",
+    "address": "docker",
+    "subscriptions": [
+      "test"
+    ]
+  }
+}

@@ -1,6 +1,6 @@
 FROM ubuntu
 
-# This installs the sensu server and api
+# This installs the sensu client and a check
 
 RUN apt-get update && \
     apt-get install --yes openssh-server apache2 supervisor wget
@@ -20,7 +20,12 @@ RUN mkdir -p /etc/sensu
 COPY config.json /etc/sensu/config.json
 
 RUN mkdir -p /etc/sensu/conf.d
+COPY client.json /etc/sensu/conf.d/client.json
 COPY default_handler.json /etc/sensu/conf.d/default_handler.json
+COPY check_memory.json /etc/sensu/conf.d/check_memory.json
+
+RUN mkdir -p /etc/sensu/plugins
+COPY check-memory.sh /etc/sensu/plugins/check-memory.sh
 
 RUN chown -R sensu:sensu /etc/sensu
 
