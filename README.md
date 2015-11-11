@@ -17,7 +17,7 @@ The uchiwa service is exposed on port 3000.
 
 docker-compose can be used to run all of the parts easily:
 
-    git clone matthewfranglen/sensu-example
+    git clone https://github.com/matthewfranglen/sensu-example
     cd sensu-example
     docker-compose up
 
