@@ -32,4 +32,3 @@ client:
     build: client
     links:
         - rabbitmq
-        - server
