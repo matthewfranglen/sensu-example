@@ -10,7 +10,7 @@ redis:
 uchiwa:
     image: uchiwa/uchiwa
     links:
-        - server
+        - api
     ports:
         - 3000:3000
     volumes:
@@ -18,6 +18,12 @@ uchiwa:
 server:
     container_name: sensu-server
     build: server
+    links:
+        - rabbitmq
+        - redis
+api:
+    container_name: sensu-api
+    build: api
     links:
         - rabbitmq
         - redis

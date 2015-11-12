@@ -2,7 +2,7 @@
   "sensu": [
     {
       "name": "Sensu",
-      "host": "server",
+      "host": "api",
       "port": 4567
     }
   ],

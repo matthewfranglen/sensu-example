@@ -7,9 +7,5 @@
   },
   "redis": {
     "host": "redis"
-  },
-  "api": {
-    "host": "api",
-    "port": 4567
   }
 }
