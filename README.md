@@ -9,7 +9,7 @@ This creates images for the following services:
  * rabbitmq
  * sensu-api
  * sensu-server
- * sensu-client
+ * sensu-client (one with a subscription check, and one with a standalone check)
  * uchiwa
 
 The uchiwa service is exposed on port 3000.
