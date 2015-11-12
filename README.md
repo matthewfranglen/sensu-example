@@ -7,7 +7,8 @@ This creates images for the following services:
 
  * redis
  * rabbitmq
- * sensu-server and sensu-api
+ * sensu-api
+ * sensu-server
  * sensu-client
  * uchiwa
 
