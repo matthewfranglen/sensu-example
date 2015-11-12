@@ -1,0 +1,7 @@
+{
+  "client": {
+    "name": "docker-standalone-client",
+    "address": "docker-standalone-client-machine",
+    "subscriptions": []
+  }
+}

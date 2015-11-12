@@ -32,3 +32,8 @@ client:
     build: client
     links:
         - rabbitmq
+standalone_client:
+    container_name: sensu-standalone-client
+    build: standalone-client
+    links:
+        - rabbitmq
