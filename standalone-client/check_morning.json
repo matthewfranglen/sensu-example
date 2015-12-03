@@ -1,6 +1,6 @@
 {
   "checks": {
-    "memory": {
+    "morning": {
       "command": "/etc/sensu/plugins/check-morning.sh",
       "interval": 10,
       "standalone": true
