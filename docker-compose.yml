@@ -17,23 +17,23 @@ uchiwa:
         - ./uchiwa:/config
 server:
     container_name: sensu-server
-    build: server
+    build: docker/server
     links:
         - rabbitmq
         - redis
 api:
     container_name: sensu-api
-    build: api
+    build: docker/api
     links:
         - rabbitmq
         - redis
 client:
     container_name: sensu-client
-    build: client
+    build: docker/client
     links:
         - rabbitmq
 standalone_client:
     container_name: sensu-standalone-client
-    build: standalone-client
+    build: docker/standalone-client
     links:
         - rabbitmq
