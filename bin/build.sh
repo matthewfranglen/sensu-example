@@ -9,8 +9,7 @@ main () {
         build_api_image               &&
         build_client_image            &&
         build_server_image            &&
-        build_standalone_client_image &&
-        build_uchiwa_image
+        build_standalone_client_image
 }
 
 
@@ -46,13 +45,6 @@ build_standalone_client_image () {
     (
         cd "${DOCKER_FOLDER}/standalone-client"
         docker build --tag matthewfranglen/sensu-standalone-client .
-    )
-}
-
-build_uchiwa_image () {
-    (
-        cd "${DOCKER_FOLDER}/uchiwa"
-        docker build --tag matthewfranglen/sensu-uchiwa .
     )
 }
 

@@ -1,0 +1,2 @@
+ROOT_FOLDER=`dirname "${BIN_FOLDER}"`
+DOCKER_FOLDER="${ROOT_FOLDER}/docker"
