@@ -25,6 +25,7 @@ services:
   server:
       container_name: sensu-server
       build: docker/server
+      image: matthewfranglen/sensu-server
       links:
           - rabbitmq
           - redis
@@ -32,6 +33,7 @@ services:
   api:
       container_name: sensu-api
       build: docker/api
+      image: matthewfranglen/sensu-api
       links:
           - rabbitmq
           - redis
@@ -39,11 +41,13 @@ services:
   client:
       container_name: sensu-client
       build: docker/client
+      image: matthewfranglen/sensu-client
       links:
           - rabbitmq
 
   standalone_client:
       container_name: sensu-standalone-client
       build: docker/standalone-client
+      image: matthewfranglen/sensu-standalone-client
       links:
           - rabbitmq
