@@ -3,7 +3,7 @@
     "name": "docker-client",
     "address": "docker-client-machine",
     "subscriptions": [
-      "test"
+      "memory"
     ]
   }
 }
