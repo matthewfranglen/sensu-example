@@ -3,17 +3,19 @@ version: "3"
 services:
 
   rabbitmq:
-      image: rabbitmq
       container_name: sensu-rabbitmq
+      image: rabbitmq
       environment:
           - RABBITMQ_DEFAULT_USER=sensu
           - RABBITMQ_DEFAULT_PASS=password
           - RABBITMQ_DEFAULT_VHOST=/sensu
 
   redis:
+      container_name: redis
       image: redis
 
   uchiwa:
+      container_name: uchiwa
       image: uchiwa/uchiwa
       links:
           - api
