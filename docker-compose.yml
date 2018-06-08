@@ -40,10 +40,39 @@ services:
           - rabbitmq
           - redis
 
-  client:
-      container_name: sensu-client
-      build: docker/client
-      image: matthewfranglen/sensu-client
+  client-1:
+      container_name: sensu-client-1
+      build:
+        context: docker/client
+        args:
+          - "ID=1"
+      links:
+          - rabbitmq
+
+  client-2:
+      container_name: sensu-client-2
+      build:
+        context: docker/client
+        args:
+          - "ID=2"
+      links:
+          - rabbitmq
+
+  client-3:
+      container_name: sensu-client-3
+      build:
+        context: docker/client
+        args:
+          - "ID=3"
+      links:
+          - rabbitmq
+
+  client-4:
+      container_name: sensu-client-4
+      build:
+        context: docker/client
+        args:
+          - "ID=4"
       links:
           - rabbitmq
 

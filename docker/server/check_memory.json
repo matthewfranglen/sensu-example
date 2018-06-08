@@ -2,6 +2,7 @@
   "checks": {
     "memory": {
       "command": "/etc/sensu/plugins/check-memory.sh -w 128 -c 64",
+      "aggregate": true,
       "interval": 10,
       "subscribers": [
         "memory"

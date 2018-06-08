@@ -1,6 +1,6 @@
 {
   "client": {
-    "name": "docker-client",
+    "name": "docker-client-${ID}",
     "address": "docker-client-machine",
     "subscriptions": [
       "memory"
