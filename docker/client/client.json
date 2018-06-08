@@ -3,7 +3,8 @@
     "name": "docker-client-${ID}",
     "address": "docker-client-machine",
     "subscriptions": [
-      "memory"
+      "memory",
+      "process"
     ]
   }
 }

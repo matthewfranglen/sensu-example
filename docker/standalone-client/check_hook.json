@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "process-standalone": {
+      "command": "/bin/false",
+      "interval": 10,
+      "standalone": true,
+      "hooks": {
+        "non-zero": {
+          "command": "ps aux",
+          "timeout": 10
+        }
+      }
+    }
+  }
+}

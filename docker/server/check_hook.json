@@ -1,0 +1,17 @@
+{
+  "checks": {
+    "process": {
+      "command": "/bin/false",
+      "interval": 10,
+      "subscribers": [
+        "process"
+      ],
+      "hooks": {
+        "non-zero": {
+          "command": "ps aux",
+          "timeout": 10
+        }
+      }
+    }
+  }
+}
